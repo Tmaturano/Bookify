@@ -72,7 +72,7 @@ public class Booking : Entity
     public Result Confirm(DateTime utcNow)
     {
         if (Status != BookingStatus.Reserved)
-            return Result.Failure(BookingErrors.NotPending);
+            return Result.Failure(BookingErrors.NotReserved);
 
         Status = BookingStatus.Confirmed;
         ConfirmedOnUtc = utcNow;
@@ -85,7 +85,7 @@ public class Booking : Entity
     public Result Reject(DateTime utcNow)
     {
         if (Status != BookingStatus.Reserved)
-            return Result.Failure(BookingErrors.NotPending);
+            return Result.Failure(BookingErrors.NotReserved);
 
         Status = BookingStatus.Rejected;
         RejectedOnUtc = utcNow;
