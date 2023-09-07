@@ -1,5 +1,6 @@
 ﻿using Bookify.Application.Abstractions.Behaviors;
 using Bookify.Domain.Entities.Bookings;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bookify.Application;
@@ -14,7 +15,11 @@ public static class DependencyInjection
 
             //When sending a command, it's going to first enter the logging behavior, run the logging statement and then execute the command handler before returning the response
             configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+
+            configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
         });
+
+        services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
         services.AddTransient<PricingService>();
 
