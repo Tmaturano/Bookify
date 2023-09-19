@@ -1,6 +1,7 @@
 ﻿using Bookify.Domain.Entities.Apartments;
 using Bookify.Domain.Entities.Bookings;
 using Bookify.Domain.Entities.Reviews;
+using Bookify.Domain.Entities.Reviews.ValueObjects;
 using Bookify.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -14,7 +15,8 @@ internal sealed class ReviewConfiguration : IEntityTypeConfiguration<Review>
 
         builder.HasKey(x => x.Id);
 
-        builder.OwnsOne(x => x.Rating);
+        builder.Property(review => review.Rating)
+            .HasConversion(rating => rating.Value, value => Rating.Create(value).Value);
 
         builder.Property(x => x.Comment)
             .HasMaxLength(200);
