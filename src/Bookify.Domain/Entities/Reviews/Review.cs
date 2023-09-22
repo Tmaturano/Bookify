@@ -3,6 +3,7 @@ using Bookify.Domain.Entities.Bookings;
 using Bookify.Domain.Entities.Bookings.Enums;
 using Bookify.Domain.Entities.Reviews.Events;
 using Bookify.Domain.Entities.Reviews.ValueObjects;
+using System.Xml.Linq;
 
 namespace Bookify.Domain.Entities.Reviews;
 
@@ -25,12 +26,19 @@ public class Review : Entity
         CreatedOnUtc = createdOnUtc;
     }
 
-    public Guid ApartmentId { get; }
-    public Guid BookingId { get; }
-    public Guid UserId { get; }
-    public Rating Rating { get; }
-    public string Comment { get; }
-    public DateTime CreatedOnUtc { get; }
+    private Review() { }
+
+    public Guid ApartmentId { get; private set; }
+
+    public Guid BookingId { get; private set; }
+
+    public Guid UserId { get; private set; }
+
+    public Rating Rating { get; private set; }
+
+    public string Comment { get; private set; }
+
+    public DateTime CreatedOnUtc { get; private set; }
 
     public static Result<Review> Create(
         Booking booking,

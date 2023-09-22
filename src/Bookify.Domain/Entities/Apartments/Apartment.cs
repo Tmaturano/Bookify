@@ -25,6 +25,8 @@ public sealed class Apartment : Entity
         Amenities = amenities;
     }
 
+    private Apartment() { }
+
     public string Name { get; private set; }
     public string Description { get; private set; }
     public Address Address { get; private set; }

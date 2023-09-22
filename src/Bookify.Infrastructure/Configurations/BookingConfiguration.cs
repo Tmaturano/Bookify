@@ -1,6 +1,5 @@
 ﻿using Bookify.Domain.Entities.Apartments;
 using Bookify.Domain.Entities.Bookings;
-using Bookify.Domain.Entities.Bookings.Enums;
 using Bookify.Domain.Entities.Users;
 using Bookify.Domain.Shared;
 using Microsoft.EntityFrameworkCore;
@@ -40,9 +39,6 @@ internal sealed class BookingConfiguration : IEntityTypeConfiguration<Booking>
         });
 
         builder.OwnsOne(x => x.Duration);
-
-        builder.Property(x => x.Status)
-            .HasConversion<string>();
 
         builder.HasOne<Apartment>()
             .WithMany()

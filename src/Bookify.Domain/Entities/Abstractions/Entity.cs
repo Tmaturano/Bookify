@@ -9,6 +9,9 @@ public abstract class Entity
         Id = id;
     }
 
+    //EF Migration usage
+    protected Entity() { }
+
     public Guid Id { get; init; }
 
     public void ClearDomainEvents() => _domainEvents.Clear();
