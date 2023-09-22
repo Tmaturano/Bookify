@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookify.Domain", "src\Booki
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookify.Application", "src\Bookify.Application\Bookify.Application.csproj", "{AD82ACB6-C7A6-4238-A328-3B2002CD577F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Infrastructure", "src\Bookify.Infrastructure\Bookify.Infrastructure.csproj", "{84A8956E-EE00-4F21-8CF8-72221A3AEF02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookify.Infrastructure", "src\Bookify.Infrastructure\Bookify.Infrastructure.csproj", "{84A8956E-EE00-4F21-8CF8-72221A3AEF02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.API", "src\Bookify.API\Bookify.API.csproj", "{45EC9535-A94C-404A-8516-0275D0F200A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{84A8956E-EE00-4F21-8CF8-72221A3AEF02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84A8956E-EE00-4F21-8CF8-72221A3AEF02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84A8956E-EE00-4F21-8CF8-72221A3AEF02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45EC9535-A94C-404A-8516-0275D0F200A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45EC9535-A94C-404A-8516-0275D0F200A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45EC9535-A94C-404A-8516-0275D0F200A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45EC9535-A94C-404A-8516-0275D0F200A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{E6C92414-D446-4B09-A6AA-EF2BB6F7ECD0} = {5E36C258-90CF-4211-ADD6-263BF0913869}
 		{AD82ACB6-C7A6-4238-A328-3B2002CD577F} = {5E36C258-90CF-4211-ADD6-263BF0913869}
 		{84A8956E-EE00-4F21-8CF8-72221A3AEF02} = {5E36C258-90CF-4211-ADD6-263BF0913869}
+		{45EC9535-A94C-404A-8516-0275D0F200A2} = {5E36C258-90CF-4211-ADD6-263BF0913869}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9AA06437-45D2-4643-9DE4-3CE62F6441B0}
