@@ -33,14 +33,14 @@ internal sealed class SearchApartmentQueryHandler : IQueryHandler<SearchApartmen
                 a.id AS Id,
                 a.name AS Name,
                 a.description AS Description,
-                a.price_amount AS PriceAmount,
-                a.price_currency AS PriceCurrency,
+                a.price_amount AS Price,
+                a.price_currency AS Currency,
                 a.address_country AS Country,
                 a.address_state AS State,
                 a.address_zip_code AS ZipCode,
                 a.address_city AS City,
                 a.address_street AS Street
-            FROM apartment a
+            FROM apartments a
             WHERE NOT EXISTS
             (
                 SELECT 1
@@ -48,7 +48,7 @@ internal sealed class SearchApartmentQueryHandler : IQueryHandler<SearchApartmen
                 WHERE
                     b.apartment_id = a.id AND
                     b.duration_start <= @EndDate AND
-                    b.duration_end >= StartDate AND
+                    b.duration_end >= @StartDate AND
                     b.status = ANY(@ActiveBookingStatuses)
                     
             )
