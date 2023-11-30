@@ -56,7 +56,7 @@ public class ExceptionHandlingMiddleware
                 "ValidationFailure",
                 "Validation error",
                 "One or more validation errors has occurred",
-                validationException.Errors),
+                validationException.Errors),            
             _ => new ExceptionDetails(
                 StatusCodes.Status500InternalServerError,
                 "ServerError",
