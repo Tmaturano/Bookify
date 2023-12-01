@@ -23,8 +23,8 @@ public class Booking : Entity<BookingId>
         DateTime createdOnUtc)
         : base(id)
     {
-        ApartmentId = apartmentId.Value;
-        UserId = userId.Value;
+        ApartmentId = apartmentId;
+        UserId = userId;
         Duration = duration;
         PriceForPeriod = priceForPeriod;
         CleaningFee = cleaningFee;
@@ -36,8 +36,8 @@ public class Booking : Entity<BookingId>
 
     protected Booking() { }
 
-    public Guid ApartmentId { get; private set; }
-    public Guid UserId { get; private set; }
+    public ApartmentId ApartmentId { get; private set; }
+    public UserId UserId { get; private set; }
     public DateRange Duration { get; private set; }
     public Money PriceForPeriod { get; private set; }
     public Money CleaningFee { get; private set; }

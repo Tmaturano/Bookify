@@ -19,9 +19,9 @@ public class Review : Entity<ReviewId>
         string comment,
         DateTime createdOnUtc) : base(id)
     {
-        ApartmentId = apartmentId.Value;
-        BookingId = bookingId.Value;
-        UserId = userId.Value;
+        ApartmentId = apartmentId;
+        BookingId = bookingId;
+        UserId = userId;
         Rating = rating;
         Comment = comment;
         CreatedOnUtc = createdOnUtc;
@@ -29,11 +29,11 @@ public class Review : Entity<ReviewId>
 
     protected Review() { }
 
-    public Guid ApartmentId { get; private set; }
+    public ApartmentId ApartmentId { get; private set; }
 
-    public Guid BookingId { get; private set; }
+    public BookingId BookingId { get; private set; }
 
-    public Guid UserId { get; private set; }
+    public UserId UserId { get; private set; }
 
     public Rating Rating { get; private set; }
 
