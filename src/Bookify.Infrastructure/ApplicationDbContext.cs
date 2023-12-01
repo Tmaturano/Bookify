@@ -44,7 +44,7 @@ public sealed class ApplicationDbContext : DbContext, IUnitOfWork
          Then we grab all the domain events and publish one by one.         
          */
         var domainEvents = ChangeTracker
-            .Entries<Entity>()
+            .Entries<IEntity>()
             .Select(entry => entry.Entity)
             .SelectMany(entity =>
             {

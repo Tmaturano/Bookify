@@ -5,7 +5,7 @@ using Bookify.Domain.Entities.Bookings.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bookify.Infrastructure.Repositories;
-internal sealed class BookingRepository : Repository<Booking>, IBookingRepository
+internal sealed class BookingRepository : Repository<Booking, BookingId>, IBookingRepository
 {
     private static readonly BookingStatus[] ActiveBookingStatuses =
     {
@@ -23,7 +23,7 @@ internal sealed class BookingRepository : Repository<Booking>, IBookingRepositor
         return await DbContext
             .Set<Booking>()
             .AnyAsync(booking =>
-                        booking.ApartmentId == apartment.Id &&
+                        booking.ApartmentId == apartment.Id.Value &&
                         booking.Duration.Start == duration.Start &&
                         booking.Duration.End == duration.End &&
                         ActiveBookingStatuses.Contains(booking.Status),

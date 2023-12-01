@@ -4,9 +4,9 @@ using Bookify.Domain.Entities.Users.ValueObjects;
 
 namespace Bookify.Domain.Entities.Users;
 
-public sealed class User : Entity
+public sealed class User : Entity<UserId>
 {
-    private User(Guid id, string firstName, string lastName, Email email) 
+    private User(UserId id, string firstName, string lastName, Email email) 
         : base(id)
     {
         FirstName = firstName;
@@ -23,7 +23,7 @@ public sealed class User : Entity
 
     public static User Create(string firstName, string lastName, Email email)
     {
-        var user = new User(Guid.NewGuid(), firstName, lastName, email);
+        var user = new User(UserId.New(), firstName, lastName, email);
 
         user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
 

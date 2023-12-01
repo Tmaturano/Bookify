@@ -36,6 +36,6 @@ internal sealed class RegisterUserCommandHandler : ICommandHandler<RegisterUserC
 
         await _unitOfWork.SaveChangesAsync();
 
-        return user.Id;
+        return user.Id.Value;
     }
 }

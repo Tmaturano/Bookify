@@ -4,11 +4,10 @@ using Bookify.Domain.Entities.Apartments.ValueObjects;
 using Bookify.Domain.Shared;
 
 namespace Bookify.Domain.Entities.Apartments;
-
-public sealed class Apartment : Entity
+public sealed class Apartment : Entity<ApartmentId>
 {
     public Apartment(
-        Guid id,
+        ApartmentId id,
         string name,
         string description,
         Address address,

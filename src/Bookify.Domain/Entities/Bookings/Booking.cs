@@ -3,16 +3,17 @@ using Bookify.Domain.Entities.Apartments;
 using Bookify.Domain.Entities.Bookings.Enums;
 using Bookify.Domain.Entities.Bookings.Events;
 using Bookify.Domain.Entities.Bookings.ValueObjects;
+using Bookify.Domain.Entities.Users;
 using Bookify.Domain.Shared;
 
 namespace Bookify.Domain.Entities.Bookings;
 
-public class Booking : Entity
+public class Booking : Entity<BookingId>
 {
     private Booking(
-        Guid id,
-        Guid apartmentId,
-        Guid userId,
+        BookingId id,
+        ApartmentId apartmentId,
+        UserId userId,
         DateRange duration,
         Money priceForPeriod,
         Money cleaningFee,
@@ -22,8 +23,8 @@ public class Booking : Entity
         DateTime createdOnUtc)
         : base(id)
     {
-        ApartmentId = apartmentId;
-        UserId = userId;
+        ApartmentId = apartmentId.Value;
+        UserId = userId.Value;
         Duration = duration;
         PriceForPeriod = priceForPeriod;
         CleaningFee = cleaningFee;
@@ -33,7 +34,7 @@ public class Booking : Entity
         CreatedOnUtc = createdOnUtc;
     }
 
-    private Booking() { }
+    protected Booking() { }
 
     public Guid ApartmentId { get; private set; }
     public Guid UserId { get; private set; }
@@ -49,12 +50,12 @@ public class Booking : Entity
     public DateTime? CompletedOnUtc { get; private set; }
     public DateTime? CancelledOnUtc { get; private set; }
 
-    public static Booking Reserve(Apartment apartment, Guid userId, DateRange duration, DateTime utcNow, PricingService pricingService)
+    public static Booking Reserve(Apartment apartment, UserId userId, DateRange duration, DateTime utcNow, PricingService pricingService)
     {
         var pricingDetails = pricingService.CalculatePrice(apartment, duration);
 
         var booking = new Booking(
-            Guid.NewGuid(),
+            BookingId.New(),
             apartment.Id,
             userId,
             duration,

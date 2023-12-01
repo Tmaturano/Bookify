@@ -1,32 +1,33 @@
 ﻿using Bookify.Domain.Entities.Abstractions;
+using Bookify.Domain.Entities.Apartments;
 using Bookify.Domain.Entities.Bookings;
 using Bookify.Domain.Entities.Bookings.Enums;
 using Bookify.Domain.Entities.Reviews.Events;
 using Bookify.Domain.Entities.Reviews.ValueObjects;
-using System.Xml.Linq;
+using Bookify.Domain.Entities.Users;
 
 namespace Bookify.Domain.Entities.Reviews;
 
-public class Review : Entity
+public class Review : Entity<ReviewId>
 {
     private Review(
-        Guid id,
-        Guid apartmentId,
-        Guid bookingId,
-        Guid userId,
+        ReviewId id,
+        ApartmentId apartmentId,
+        BookingId bookingId,
+        UserId userId,
         Rating rating,
         string comment,
         DateTime createdOnUtc) : base(id)
     {
-        ApartmentId = apartmentId;
-        BookingId = bookingId;
-        UserId = userId;
+        ApartmentId = apartmentId.Value;
+        BookingId = bookingId.Value;
+        UserId = userId.Value;
         Rating = rating;
         Comment = comment;
         CreatedOnUtc = createdOnUtc;
     }
 
-    private Review() { }
+    protected Review() { }
 
     public Guid ApartmentId { get; private set; }
 
@@ -50,10 +51,10 @@ public class Review : Entity
             return Result.Failure<Review>(ReviewErrors.NotEligible);
 
         var review = new Review(
-            Guid.NewGuid(),
-            booking.ApartmentId,
+            ReviewId.New(),
+            new ApartmentId(booking.ApartmentId),
             booking.Id,
-            booking.UserId,
+            new UserId(booking.UserId),
             rating,
             comment,
             createdOnUtc);
