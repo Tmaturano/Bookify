@@ -27,7 +27,7 @@ internal sealed class BookingReservedDomainEventHandler : INotificationHandler<B
         var booking = await _bookingRepository.GetByIdAsync(notification.BookingId, cancellationToken);
         if (booking is null) return;
 
-        var user = await _userRepository.GetByIdAsync(new UserId(booking.UserId), cancellationToken);
+        var user = await _userRepository.GetByIdAsync(booking.UserId, cancellationToken);
         if (user is null) return;
 
         await _emailService.SendAsync(

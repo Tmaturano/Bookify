@@ -23,7 +23,7 @@ internal sealed class BookingRepository : Repository<Booking, BookingId>, IBooki
         return await DbContext
             .Set<Booking>()
             .AnyAsync(booking =>
-                        booking.ApartmentId == apartment.Id.Value &&
+                        booking.ApartmentId == apartment.Id &&
                         booking.Duration.Start == duration.Start &&
                         booking.Duration.End == duration.End &&
                         ActiveBookingStatuses.Contains(booking.Status),

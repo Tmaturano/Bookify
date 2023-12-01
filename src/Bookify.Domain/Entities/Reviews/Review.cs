@@ -52,9 +52,9 @@ public class Review : Entity<ReviewId>
 
         var review = new Review(
             ReviewId.New(),
-            new ApartmentId(booking.ApartmentId),
+            booking.ApartmentId,
             booking.Id,
-            new UserId(booking.UserId),
+            booking.UserId,
             rating,
             comment,
             createdOnUtc);
