@@ -29,7 +29,7 @@ public class PricingService
         if (percentageUpCharge > 0)        
             amenitiesUpCharge = new Money(priceForPeriod.Amount * percentageUpCharge, currency);
 
-        var totalPrice = Money.Zero();
+        var totalPrice = Money.Zero(currency);
         totalPrice += priceForPeriod;
 
         if (!apartment.CleaningFee.IsZero())
