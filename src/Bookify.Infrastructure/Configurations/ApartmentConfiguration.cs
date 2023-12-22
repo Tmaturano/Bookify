@@ -12,6 +12,9 @@ internal sealed class ApartmentConfiguration : IEntityTypeConfiguration<Apartmen
 
         builder.HasKey(x => x.Id);
 
+        builder.Property(x => x.Id)
+            .HasConversion(apartmentId => apartmentId.Value, value => new ApartmentId(value));
+
         builder.OwnsOne(x => x.Address);
 
         builder.Property(x => x.Name)

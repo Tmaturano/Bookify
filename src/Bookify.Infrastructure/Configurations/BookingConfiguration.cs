@@ -14,6 +14,9 @@ internal sealed class BookingConfiguration : IEntityTypeConfiguration<Booking>
 
         builder.HasKey(x => x.Id);
 
+        builder.Property(x => x.Id)
+            .HasConversion(bookingId => bookingId.Value, value => new BookingId(value));
+
         builder.OwnsOne(x => x.PriceForPeriod, priceBuilder =>
         {
             priceBuilder.Property(money => money.Currency)

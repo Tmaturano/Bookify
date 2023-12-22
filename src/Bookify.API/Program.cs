@@ -1,3 +1,4 @@
+using Bookify.API.Controllers.Bookings;
 using Bookify.API.Extensions;
 using Bookify.Application;
 using Bookify.Infrastructure;
@@ -33,5 +34,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapBookingEndpoints();
 
 app.Run();
