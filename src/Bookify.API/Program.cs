@@ -35,6 +35,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapBookingEndpoints();
+//app.MapBookingEndpoints();
 
 app.Run();
