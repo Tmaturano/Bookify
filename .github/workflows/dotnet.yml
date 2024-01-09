@@ -28,15 +28,15 @@ jobs:
     - name: Build
       run: dotnet build --no-restore --configuration Release
       working-directory: src/Bookify.API
+
+    - name: Test Application
+      run: dotnet test --verbosity normal
+      working-directory: test/Bookify.Application.UnitTests
        
     - name: Test Domain
-      run: dotnet test 
+      run: dotnet test --verbosity normal
       working-directory: test/Bookify.Domain.UnitTests
-    
-    - name: Build Architecture Tests
-      run: dotnet build --configuration Release
-      working-directory: test/Bookify.ArchitectureTests
-    
+        
     - name: Test Architecture
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --verbosity normal
       working-directory: test/Bookify.ArchitectureTests    
