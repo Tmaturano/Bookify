@@ -28,13 +28,9 @@ jobs:
     - name: Build
       run: dotnet build --no-restore --configuration Release
       working-directory: src/Bookify.API
-
-    - name: Restore Application Test dependencies
-      run: dotnet restore
-      working-directory: test/Bookify.Application.UnitTests
     
-    - name: Test Application
-      run: dotnet test --no-build --verbosity detailed
+    - name: Build and Test Application
+      run: dotnet build --configuration Release && dotnet test --no-build --verbosity detailed
       working-directory: test/Bookify.Application.UnitTests
 
     - name: Restore Domain Test dependencies
