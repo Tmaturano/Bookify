@@ -30,7 +30,7 @@ jobs:
       working-directory: src/Bookify.API
        
     - name: Test Domain
-      run: dotnet test --configuration Release --no-build
+      run: dotnet test 
       working-directory: test/Bookify.Domain.UnitTests
     
     - name: Build Architecture Tests
