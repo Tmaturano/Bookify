@@ -10,7 +10,7 @@ using Bookify.Domain.Entities.Users;
 
 namespace Bookify.Application.Bookings.ReserveBooking;
 
-internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBookingCommand, Guid>
+public sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBookingCommand, Guid>
 {
     private readonly IUserRepository _userRepository;
     private readonly IApartmentRepository _apartmentRepository;
