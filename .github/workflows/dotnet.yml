@@ -30,13 +30,13 @@ jobs:
       working-directory: src/Bookify.API
 
     - name: Test Application
-      run: dotnet test --verbosity normal
+      run: dotnet test 
       working-directory: test/Bookify.Application.UnitTests
        
     - name: Test Domain
-      run: dotnet test --verbosity normal
+      run: dotnet test 
       working-directory: test/Bookify.Domain.UnitTests
         
     - name: Test Architecture
-      run: dotnet test --verbosity normal
+      run: dotnet test 
       working-directory: test/Bookify.ArchitectureTests    
