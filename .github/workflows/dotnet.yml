@@ -34,7 +34,7 @@ jobs:
       working-directory: test/Bookify.Application.UnitTests
     
     - name: Test Application
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal --filter FullyQualifiedName~Bookify.Application.UnitTests
       working-directory: test/Bookify.Application.UnitTests
     
     - name: Build Domain Tests
