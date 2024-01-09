@@ -20,12 +20,23 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.0.x
+    
     - name: Restore dependencies
       run: dotnet restore
       working-directory: src/Bookify.API
+    
     - name: Build
       run: dotnet build --no-restore --configuration Release
       working-directory: src/Bookify.API
-    - name: Test
+    
+    - name: Test Application
       run: dotnet test --no-build --verbosity normal
-      working-directory: src/Bookify.API
+      working-directory: test/Bookify.Application.UnitTests
+
+    - name: Test Domain
+      run: dotnet test --no-build --verbosity normal
+      working-directory: test/Bookify.Domain.UnitTests    
+
+    - name: Test Architecture
+      run: dotnet test --no-build --verbosity normal
+      working-directory: test/Bookify.ArchitectureTests
