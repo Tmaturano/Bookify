@@ -14,14 +14,14 @@ public sealed class ApplicationDbContext : DbContext, IUnitOfWork
         TypeNameHandling = TypeNameHandling.All
     };
 
-    private readonly IPublisher _publisher;
+    //private readonly IPublisher _publisher;
     private readonly IDateTimeProvider _dateTimeProvider;
 
     public ApplicationDbContext(DbContextOptions options, 
-        IPublisher publisher,
+        //IPublisher publisher,
         IDateTimeProvider dateTimeProvider) : base(options)
     {
-        _publisher = publisher;
+        //_publisher = publisher;
         _dateTimeProvider = dateTimeProvider;
     }
 
