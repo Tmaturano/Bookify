@@ -4,7 +4,7 @@ using System.Security.Claims;
 namespace Bookify.Infrastructure.Authentication;
 internal static class ClaimsPrincipalExtensions
 {
-    public static Guid GetUserId(this ClaimsPrincipal? principal)
+    public static Guid GetUserId(this ClaimsPrincipal principal)
     {
         string userId = principal?.FindFirstValue(JwtRegisteredClaimNames.Sub);
 
@@ -13,7 +13,7 @@ internal static class ClaimsPrincipalExtensions
             throw new ApplicationException("User identifier is unavailable");
     }
 
-    public static string GetIdentityId(this ClaimsPrincipal? principal)
+    public static string GetIdentityId(this ClaimsPrincipal principal)
     {
         return principal?.FindFirstValue(ClaimTypes.NameIdentifier) ??
                throw new ApplicationException("User identity is unavailable");
