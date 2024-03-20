@@ -8,8 +8,13 @@ internal sealed class UserContext : IUserContext
 
     public UserContext(IHttpContextAccessor contextAccessor) => _contextAccessor = contextAccessor;
 
+    public Guid UserId =>
+        _contextAccessor
+            .HttpContext?.User
+            .GetUserId() ?? throw new ApplicationException("User context is unavailable");
+
     public string IdentityId =>
         _contextAccessor
             .HttpContext?.User
-            .GetIdentityId() ?? throw new ApplicationException("User context is unavailable");
+            .GetIdentityId() ?? throw new ApplicationException("User context is unavailable");    
 }
