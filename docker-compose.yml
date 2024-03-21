@@ -34,3 +34,13 @@ services:
       - ./.files/bookify-realm-export.json:/tmp/bookify-realm-export.json
     ports:
       - 18080:8080
+
+  bookify-seq:
+    image: datalust/seq:latest
+    container_name: Bookify.Seq
+    environment:
+     - ACCEPT_EULA=Y
+    ports:
+     - 5341:5341
+     - 8081:80
+
