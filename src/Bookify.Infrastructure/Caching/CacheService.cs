@@ -32,7 +32,7 @@ internal sealed class CacheService : ICacheService
         return _distributedCache.SetAsync(key, bytes, CacheOptions.Create(expiration), cancellationToken);
     }
 
-    private static T Deserialize<T>(byte[] bytes) => JsonSerializer.Deserialize<T>(bytes)!;
+    private static T Deserialize<T>(byte[] bytes) => JsonSerializer.Deserialize<T>(bytes);
 
     private static byte[] Serialize<T>(T value)
     {
