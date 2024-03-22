@@ -50,7 +50,7 @@ internal sealed class ProcessOutboxMessagesJob : IJob
 
         foreach (var outboxMessage in outboxMessages)
         {
-            Exception? exception = null;
+            Exception exception = null;
 
             try
             {
@@ -97,7 +97,7 @@ internal sealed class ProcessOutboxMessagesJob : IJob
         IDbConnection connection,
         IDbTransaction transaction,
         OutboxMessageResponse outboxMessage,
-        Exception? exception)
+        Exception exception)
     {
         const string sql = @"
             UPDATE outbox_messages

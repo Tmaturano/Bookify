@@ -44,3 +44,9 @@ services:
      - 5341:5341
      - 8081:80
 
+  bookify-redis:
+    image: redis:latest
+    container_name: Bookify.Redis
+    restart: always
+    ports:
+     - 6379:6379
