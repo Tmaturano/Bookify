@@ -9,8 +9,8 @@ Clean Architecture application
 * Some Unit tests + Architecture Tests
 * Structured Logging with Serilog and Seq
 * Distributed Caching with Redis
-* Health Checks in Clean Architecture (in progress)
-* API Versioning (in progress)
+* Health Checks in Clean Architecture (see {{baseUrl/health}} to see the status for the database, redis and keycloak services)
+* API Versioning
   
 ### How to run this application
 * Have Docker installed and .Net 7+
