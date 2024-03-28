@@ -1,8 +1,9 @@
 using Bookify.API.Extensions;
 using Bookify.Application;
 using Bookify.Infrastructure;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Serilog;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,5 +45,10 @@ app.UseAuthorization();
 app.MapControllers();
 
 //app.MapBookingEndpoints();
+
+app.MapHealthChecks("health", new HealthCheckOptions
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.Run();
