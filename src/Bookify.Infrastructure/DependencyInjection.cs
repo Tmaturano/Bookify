@@ -61,7 +61,12 @@ public static class DependencyInjection
     {
         services.Configure<OutboxOptions>(configuration.GetSection("Outbox"));
 
-        services.AddQuartz();
+        services.AddQuartz(configurator =>
+        {
+            var schedulerId = Guid.NewGuid();
+            configurator.SchedulerId = $"default-id-{schedulerId}";
+            configurator.SchedulerName = $"default-name-{schedulerId}";
+        });
 
         services.AddQuartzHostedService(options => options.WaitForJobsToComplete = true);
 

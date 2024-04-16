@@ -16,9 +16,5 @@ public abstract class BaseIntegrationTest : IClassFixture<IntegrationTestWebAppF
 
         Sender = _serviceScope.ServiceProvider.GetRequiredService<ISender>();
         DbContext = _serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-
-
-        //TODO: When running all integration tests at the same time
-        //Quartz.SchedulerException : Scheduler with name 'QuartzScheduler' already exists.
     }
 }
