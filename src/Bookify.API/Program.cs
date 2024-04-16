@@ -41,7 +41,8 @@ if (app.Environment.IsDevelopment())
 
     app.ApplyMigrations();
 
-    //app.SeedData();//runs this only once
+    // REMARK: Uncomment if you want to seed initial data
+    app.SeedData();
 }
 
 app.UseHttpsRedirection();
@@ -66,3 +67,6 @@ app.MapHealthChecks("health", new HealthCheckOptions
 });
 
 app.Run();
+
+//In order to reference in the IntegrationTest project
+public partial class Program;
